@@ -1,0 +1,13 @@
+﻿## Build folders
+bin/
+obj/
+
+## Visual Studio
+.vs/
+
+## Secrets
+appsettings.json
+
+## User-specific files
+*.user
+*.suo
