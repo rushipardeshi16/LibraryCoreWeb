@@ -21,6 +21,12 @@ namespace LibraryCoreWeb
             options.UseSqlServer(
             builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<LibraryDbContext>();
+                db.Database.Migrate();
+            }
+
             // JWT Authentication
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
